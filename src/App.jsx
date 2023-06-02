@@ -1,24 +1,14 @@
 import Header from "./Header.jsx";
-import Activity from "./components/Activity/Activity.jsx";
-//import useActivity from "./hooks/useActivity.js";
+import ActivityGroup from "./components/ActivityGroup/ActivityGroup.jsx";
+import useActivity from "./hooks/useActivity.js";
 
 const App = () => {
-  // const x = useActivity();
-  const list = new Array(100).fill(undefined);
+  const { loading, unarchived, archived } = useActivity();
   return (
     <div className="container">
       <Header />
       <div className="container-view">
-        {list.map((item, i) => (
-          <Activity
-            key={i}
-            icon="inbound"
-            number="+1 647 295 7559"
-            via="via 1"
-            time="4:20"
-            meridiem="PM"
-          />
-        ))}
+        <ActivityGroup />
       </div>
     </div>
   );
