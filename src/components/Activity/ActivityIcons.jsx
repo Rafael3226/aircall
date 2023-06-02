@@ -1,22 +1,13 @@
-import React from "react";
-
-import {
-  BsTelephoneInboundFill,
-  BsTelephoneOutboundFill,
-  BsTelephone,
-  BsVoicemail,
-} from "react-icons/bs";
-
-const icons = {
-  inbound: <BsTelephoneInboundFill />,
-  outbound: <BsTelephoneOutboundFill />,
-  voicemail: <BsVoicemail />,
-  default: <BsTelephone />,
-};
+import PropTypes from "prop-types";
+import { ICONS } from "../../constant";
 
 const ActivityIcons = ({ tag }) => {
-  if (Object.keys(icons).includes(tag)) return icons[tag];
-  return icons["default"];
+  const Icon = ICONS[tag] ?? ICONS.default;
+  return <Icon />;
+};
+
+ActivityIcons.propTypes = {
+  tag: PropTypes.string,
 };
 
 export default ActivityIcons;

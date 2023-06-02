@@ -1,22 +1,42 @@
-import React from "react";
-import "./activity.css";
-import ActivityIcons from "./ActivityIcons.jsx";
+import PropTypes from "prop-types";
+import ActivityIcons from "./ActivityIcons";
+import {
+  ActivityContainer,
+  ActivitySubtitle,
+  ActivityTitle,
+  DateContainer,
+  IconContainer,
+  InformationContainer,
+  Meridiem,
+  ThreeDotsVertical,
+  Time,
+} from "./Activity.styles.jsx";
 
-const Activity = ({ icon, number, via, date }) => {
+const Activity = ({ icon, number, via, time, meridiem }) => {
   return (
-    <div className="activity-container">
-      <div className="activity-icon-container">
+    <ActivityContainer>
+      <IconContainer>
         <ActivityIcons tag={icon} />
-      </div>
-      <div className="activity-info-container">
-        <span className="activity-number">{number}</span>
-        <span className="activity-via">{via}</span>
-      </div>
-      <div className="activity-date-container">
-        <span className="activity-date">{date}</span>
-      </div>
-    </div>
+      </IconContainer>
+      <InformationContainer>
+        <ActivityTitle>{number}</ActivityTitle>
+        <ActivitySubtitle>{via}</ActivitySubtitle>
+      </InformationContainer>
+      <DateContainer>
+        <ThreeDotsVertical />
+        <Time>{time}</Time>
+        <Meridiem>{meridiem}</Meridiem>
+      </DateContainer>
+    </ActivityContainer>
   );
+};
+
+Activity.propTypes = {
+  icon: PropTypes.string,
+  number: PropTypes.string,
+  via: PropTypes.string,
+  time: PropTypes.string,
+  meridiem: PropTypes.string,
 };
 
 export default Activity;
