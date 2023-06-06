@@ -8,14 +8,16 @@ import {
 } from "./ActivityGroup.styles";
 
 const ActivityGroup = ({ groups }) => {
+  const groupList = Object.entries(groups);
+
   return (
     <>
-      {groups.map((g, i) => (
+      {groupList.map(([date, activities], i) => (
         <GroupContainer key={i}>
           <DivitionContainer>
-            <DivitionText>123</DivitionText>
+            <DivitionText>{date}</DivitionText>
           </DivitionContainer>
-          <ActivityList activities={[1, 2, 3]} />
+          <ActivityList activities={activities} />
         </GroupContainer>
       ))}
     </>
@@ -23,7 +25,7 @@ const ActivityGroup = ({ groups }) => {
 };
 
 ActivityGroup.propTypes = {
-  groups: PropTypes.array,
+  groups: PropTypes.object,
 };
 
 export default ActivityGroup;

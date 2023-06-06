@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import * as reactions from "./reactions";
 
 const initialState = {
-  archived: [],
-  unarchived: [],
+  archived: {},
+  unarchived: {},
 };
 const reducers = {
   fetchActivities: (s) => s,

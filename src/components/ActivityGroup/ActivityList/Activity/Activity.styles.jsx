@@ -1,7 +1,7 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
 import styled from "styled-components";
 
-const ActivityContainer = styled.div`
+export const ActivityContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,7 +17,7 @@ const ActivityContainer = styled.div`
   }
 `;
 
-const IconContainer = styled.div`
+export const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,33 +28,34 @@ const IconContainer = styled.div`
   }
 `;
 
-const InformationContainer = styled.div`
+export const InformationContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
 `;
 
-const ActivityTitle = styled.span`
+export const ActivityTitle = styled.span`
   font-size: 1rem;
   font-weight: bold;
 `;
-const ActivitySubtitle = styled.span`
+
+export const ActivitySubtitle = styled.span`
   font-size: 0.8rem;
   color: #bcbbbc;
 `;
 
-const DateContainer = styled.span`
+export const DateContainer = styled.span`
   display: flex;
 `;
 
-const Time = styled.span`
+export const Time = styled.span`
   color: #bcbbbc;
   font-weight: bold;
   padding: 4px;
   font-size: 0.75rem;
 `;
 
-const Meridiem = styled.span`
+export const Meridiem = styled.span`
   color: #bcbbbc;
   font-weight: bold;
   border-top: 1px solid #efefef;
@@ -65,18 +66,28 @@ const Meridiem = styled.span`
   border-bottom-left-radius: 4px;
   font-size: 0.75rem;
 `;
-const ThreeDotsVertical = styled(BsThreeDotsVertical)`
+
+export const ThreeDotsVertical = styled(BsThreeDotsVertical)`
   color: rgba(0, 0, 0, 0.1);
 `;
 
-export {
-  ActivityContainer,
-  IconContainer,
-  InformationContainer,
-  ActivityTitle,
-  ActivitySubtitle,
-  DateContainer,
-  Time,
-  Meridiem,
-  ThreeDotsVertical,
-};
+export const Counter = styled.div`
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  color: #fff;
+  background-color: #ee481b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.75rem;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  gap: 4px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+`;

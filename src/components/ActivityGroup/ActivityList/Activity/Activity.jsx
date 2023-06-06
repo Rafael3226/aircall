@@ -1,25 +1,30 @@
 import PropTypes from "prop-types";
-import ActivityIcons from "./ActivityIcons";
+import ActivityIcons from "./ActivityIcons/ActivityIcons";
 import {
   ActivityContainer,
   ActivitySubtitle,
   ActivityTitle,
+  Counter,
   DateContainer,
   IconContainer,
   InformationContainer,
   Meridiem,
   ThreeDotsVertical,
   Time,
+  TitleContainer,
 } from "./Activity.styles.jsx";
 
-const Activity = ({ icon, number, via, time, meridiem }) => {
+const Activity = ({ icon, title, via, time, meridiem, count }) => {
   return (
     <ActivityContainer>
       <IconContainer>
         <ActivityIcons tag={icon} />
       </IconContainer>
       <InformationContainer>
-        <ActivityTitle>{number}</ActivityTitle>
+        <TitleContainer>
+          <ActivityTitle>{title}</ActivityTitle>
+          {count !== 0 && <Counter>{count}</Counter>}
+        </TitleContainer>
         <ActivitySubtitle>{via}</ActivitySubtitle>
       </InformationContainer>
       <DateContainer>
@@ -33,10 +38,11 @@ const Activity = ({ icon, number, via, time, meridiem }) => {
 
 Activity.propTypes = {
   icon: PropTypes.string,
-  number: PropTypes.string,
+  title: PropTypes.string,
   via: PropTypes.string,
   time: PropTypes.string,
   meridiem: PropTypes.string,
+  count: PropTypes.number,
 };
 
 export default Activity;

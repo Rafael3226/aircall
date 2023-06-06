@@ -1,6 +1,11 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const selectActivities = createSelector(
+export const selectArchived = createSelector(
   (state) => state.activities,
-  ({ activities }) => activities
+  ({ archived }) => archived
+);
+
+export const selectUnarchived = createSelector(
+  (state) => state.activities,
+  ({ unarchived }) => unarchived
 );
