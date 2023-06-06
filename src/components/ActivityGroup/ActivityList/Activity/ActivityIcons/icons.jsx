@@ -1,20 +1,20 @@
 import {
   BsFillTelephoneInboundFill,
   BsFillTelephoneOutboundFill,
-  BsFillTelephoneFill,
+  BsTelephone,
   BsVoicemail,
   BsFillTelephoneXFill,
 } from "react-icons/bs";
 import styled from "styled-components";
 
-const Missed = styled(BsFillTelephoneXFill)`
-  color: red;
+const InboundMissed = styled(BsFillTelephoneXFill)`
+  color: #ee481b;
 `;
 
 export const ICONS = {
   inbound: <BsFillTelephoneInboundFill />,
   outbound: <BsFillTelephoneOutboundFill />,
   voicemail: <BsVoicemail />,
-  missed: <Missed />,
-  default: <BsFillTelephoneFill />,
+  missed: <InboundMissed />,
+  default: <BsTelephone />,
 };
