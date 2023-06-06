@@ -5,11 +5,7 @@ import { selectUnarchived } from "../store/activities";
 const ActivitiesPage = () => {
   const groups = useSelector(selectUnarchived);
 
-  return (
-    <div>
-      <ActivityGroup groups={groups} />
-    </div>
-  );
+  return <ActivityGroup groups={groups} />;
 };
 
 export default ActivitiesPage;
