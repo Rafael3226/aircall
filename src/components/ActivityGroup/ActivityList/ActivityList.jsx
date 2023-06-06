@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { ListContainer } from "./ActivityList.styles";
-import Activity from "../Activity";
+import Activity from "./Activity";
 
 function ActivityList({ activities }) {
   return (
