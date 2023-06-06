@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import ActivityIcons from "./ActivityIcons/ActivityIcons";
+import ActivityIcons from "../ActivityIcons";
 import {
   ActivityContainer,
   ActivitySubtitle,

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import ActivityList from "./ActivityList";
+import ActivityList from "../ActivityList";
 import {
   GroupContainer,
   DivitionContainer,

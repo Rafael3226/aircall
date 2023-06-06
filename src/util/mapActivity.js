@@ -1,4 +1,4 @@
-import { formatTime, formatTimeType } from "../../../util/dates";
+import { formatTime, formatTimeType } from "../util/dates";
 
 export const mapActivity = ({
   direction,

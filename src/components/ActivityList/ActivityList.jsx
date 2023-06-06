@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { ListContainer } from "./ActivityList.styles";
-import Activity from "./Activity";
-import { mapActivity } from "./mapActivity";
+import Activity from "../Activity";
+import { mapActivity } from "../../util/mapActivity";
 
 function ActivityList({ activities, onClick }) {
   return (
