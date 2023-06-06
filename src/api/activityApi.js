@@ -2,13 +2,15 @@ import axios from "axios";
 
 const API_URL = "https://cerulean-marlin-wig.cyclic.app";
 
-export const getActivities = () => axios.get(`${API_URL}/activities`);
+export const getActivities = async () =>
+  await axios.get(`${API_URL}/activities`);
 
-export const getActivity = (id) => axios.get(`${API_URL}/activities/${id}`);
+export const getActivity = async (id) =>
+  await axios.get(`${API_URL}/activities/${id}`);
 
-export const patchIsArchive = (id, isArchived) => {
+export const patchIsArchive = async (id, isArchived) => {
   const updateData = { is_archived: isArchived };
-  return axios.patch(`${API_URL}/activities/${id}`, updateData);
+  return await axios.patch(`${API_URL}/activities/${id}`, updateData);
 };
 
-export const patchReset = () => axios.patch(`${API_URL}/reset`);
+export const patchReset = async () => await axios.patch(`${API_URL}/reset`);

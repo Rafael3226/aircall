@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import * as reactions from "./reactions";
 
 const initialState = {
   archived: [],
@@ -6,12 +7,13 @@ const initialState = {
 };
 const reducers = {
   fetchActivities: (s) => s,
+  setActivities: reactions.setActivities,
 };
 
-const { actions, reducer } = createSlice({
+export const { actions, reducer } = createSlice({
   name: "activities",
   initialState,
   reducers,
 });
 
-export { actions, reducer };
+export const { fetchActivities, setActivities } = actions;
