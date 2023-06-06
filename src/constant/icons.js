@@ -5,11 +5,9 @@ import {
   BsVoicemail,
 } from "react-icons/bs";
 
-const ICONS = {
+export const ICONS = {
   inbound: BsFillTelephoneInboundFill,
   outbound: BsFillTelephoneOutboundFill,
   voicemail: BsVoicemail,
   default: BsFillTelephoneFill,
 };
-
-export default ICONS;

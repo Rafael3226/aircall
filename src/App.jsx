@@ -6,7 +6,7 @@ const App = () => {
     <div className="container">
       <Header />
       <div className="container-view">
-        <ActivityGroup />
+        <ActivityGroup groups={[1, 2, 3]} />
       </div>
     </div>
   );

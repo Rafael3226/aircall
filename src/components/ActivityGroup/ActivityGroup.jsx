@@ -1,21 +1,44 @@
-import Activity from "../Activity";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-const ActivityGroup = () => {
-  const list = new Array(100).fill(undefined);
+import ActivityList from "../ActivityList";
+
+const GroupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const DivitionContainer = styled.div`
+  border-bottom: 1px dashed #bdbdbc;
+  text-align: center;
+  height: 8px;
+  margin-bottom: 10px;
+  color: #bdbdbc;
+  margin: 16px 0;
+`;
+const DivitionText = styled.span`
+  padding: 0 12px;
+  font-weight: bold;
+  background: #ffffff;
+  letter-spacing: 1px;
+`;
+
+const ActivityGroup = ({ groups }) => {
   return (
-    <div>
-      {list.map((item, i) => (
-        <Activity
-          key={i}
-          icon="inbound"
-          number="+1 647 295 7559"
-          via="via 1"
-          time="4:20"
-          meridiem="PM"
-        />
+    <>
+      {groups.map((g, i) => (
+        <GroupContainer key={i}>
+          <DivitionContainer>
+            <DivitionText>123</DivitionText>
+          </DivitionContainer>
+          <ActivityList activities={[1, 2, 3]} />
+        </GroupContainer>
       ))}
-    </div>
+    </>
   );
+};
+
+ActivityGroup.propTypes = {
+  groups: PropTypes.array,
 };
 
 export default ActivityGroup;

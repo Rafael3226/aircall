@@ -6,7 +6,7 @@ const ActivityContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  padding: 15px;
+  padding: 16px 0 16px 16px;
 
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
