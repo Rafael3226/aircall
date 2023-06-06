@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const ActivityContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   padding: 16px 0 16px 16px;
 
@@ -29,6 +28,7 @@ export const IconContainer = styled.div`
 `;
 
 export const InformationContainer = styled.div`
+  padding-left: 40px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -45,6 +45,7 @@ export const ActivitySubtitle = styled.span`
 `;
 
 export const DateContainer = styled.span`
+  margin-left: auto;
   display: flex;
 `;
 
