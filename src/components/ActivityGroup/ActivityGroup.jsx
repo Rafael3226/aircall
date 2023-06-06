@@ -6,9 +6,23 @@ import {
   DivitionContainer,
   DivitionText,
 } from "./ActivityGroup.styles";
+import { useDispatch } from "react-redux";
+import { setGroup } from "../../store/activities";
+import { useNavigate } from "react-router-dom";
 
-const ActivityGroup = ({ groups }) => {
+const ActivityGroup = ({ groups, isDetail }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const groupList = Object.entries(groups);
+
+  const handleClick = ({ date, list }) => {
+    const group = { [date]: list };
+    if (!isDetail) {
+      dispatch(setGroup({ group }));
+      navigate("/details");
+    }
+  };
 
   return (
     <>
@@ -17,7 +31,10 @@ const ActivityGroup = ({ groups }) => {
           <DivitionContainer>
             <DivitionText>{date}</DivitionText>
           </DivitionContainer>
-          <ActivityList activities={activities} />
+          <ActivityList
+            activities={activities}
+            onClick={(list) => handleClick({ date, list })}
+          />
         </GroupContainer>
       ))}
     </>
@@ -26,6 +43,7 @@ const ActivityGroup = ({ groups }) => {
 
 ActivityGroup.propTypes = {
   groups: PropTypes.object,
+  isDetail: PropTypes.bool,
 };
 
 export default ActivityGroup;

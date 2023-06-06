@@ -14,9 +14,9 @@ import {
   TitleContainer,
 } from "./Activity.styles.jsx";
 
-const Activity = ({ icon, title, via, time, meridiem, count }) => {
+const Activity = ({ icon, title, via, time, meridiem, count, onClick }) => {
   return (
-    <ActivityContainer>
+    <ActivityContainer onClick={onClick}>
       <IconContainer>
         <ActivityIcons tag={icon} />
       </IconContainer>
@@ -43,6 +43,7 @@ Activity.propTypes = {
   time: PropTypes.string,
   meridiem: PropTypes.string,
   count: PropTypes.number,
+  onClick: PropTypes.func,
 };
 
 export default Activity;

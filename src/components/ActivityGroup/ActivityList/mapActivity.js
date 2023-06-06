@@ -23,7 +23,7 @@ export const mapActivity = ({
   return mapped;
 };
 
-const getIcon = ({ direction, call_type }) => {
+export const getIcon = ({ direction, call_type }) => {
   if (direction === "inbound" && call_type === "voicemail") return "voicemail";
   if (direction === "inbound" && call_type === "missed") return "missed";
   if (direction === "outbound") return "outbound";
@@ -31,6 +31,6 @@ const getIcon = ({ direction, call_type }) => {
   return "";
 };
 
-const getTitle = ({ direction, from, to }) => {
+export const getTitle = ({ direction, from, to }) => {
   return direction === "inbound" ? from : to;
 };

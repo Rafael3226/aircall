@@ -5,7 +5,7 @@ import ActivityGroup from "../components/ActivityGroup";
 const ArchivedActivitiesPage = () => {
   const groups = useSelector(selectArchived);
 
-  return <ActivityGroup groups={groups} />;
+  return <ActivityGroup groups={groups} isDetail={false} />;
 };
 
 export default ArchivedActivitiesPage;

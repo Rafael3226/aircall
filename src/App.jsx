@@ -7,6 +7,7 @@ import { lazy } from "react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchActivities } from "./store/activities";
+import ActivityDetailsPage from "./pages/ActivityDetailsPage";
 
 const ActivitiesPage = lazy(() => import("./pages/ActivitiesPage.jsx"));
 const ArchivedActivitiesPage = lazy(() =>
@@ -27,6 +28,7 @@ const App = () => {
         <div className="container-view">
           <Suspense fallback={<Loading />}>
             <Routes>
+              <Route path="/details" element={<ActivityDetailsPage />} />
               <Route path="/archived" element={<ArchivedActivitiesPage />} />
               <Route path="*" element={<ActivitiesPage />} />
             </Routes>

@@ -4,10 +4,13 @@ import * as reactions from "./reactions";
 const initialState = {
   archived: {},
   unarchived: {},
+  group: {},
 };
+
 const reducers = {
   fetchActivities: (s) => s,
   setActivities: reactions.setActivities,
+  setGroup: reactions.setGroup,
 };
 
 export const { actions, reducer } = createSlice({
@@ -16,4 +19,4 @@ export const { actions, reducer } = createSlice({
   reducers,
 });
 
-export const { fetchActivities, setActivities } = actions;
+export const { fetchActivities, setActivities, setGroup } = actions;

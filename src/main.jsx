@@ -7,7 +7,6 @@ import store from "./store";
 
 import "./css/body.css";
 import "./css/app.css";
-import "./css/header.css";
 
 ReactDOM.createRoot(document.getElementById("app")).render(
   <React.StrictMode>

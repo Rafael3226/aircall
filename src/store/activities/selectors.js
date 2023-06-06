@@ -9,3 +9,8 @@ export const selectUnarchived = createSelector(
   (state) => state.activities,
   ({ unarchived }) => unarchived
 );
+
+export const selectGroup = createSelector(
+  (state) => state.activities,
+  ({ group }) => group
+);
