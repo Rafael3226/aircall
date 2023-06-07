@@ -3,9 +3,11 @@ import { setAllIsArchived, updateAllIsArchived } from "../slice";
 
 import { patchMultipleIsArchive } from "../../../api/activityApi";
 import { selectArchived, selectUnarchived } from "../selectors";
+import { setLoading } from "../../loading/slice";
 
 function* hadleUpdateAllIsArchived({ payload }) {
   try {
+    yield put(setLoading({ isLoading: true }));
     const { is_archived } = payload;
     const selector = is_archived ? selectUnarchived : selectArchived;
     const activityList = yield select(selector);
@@ -20,6 +22,8 @@ function* hadleUpdateAllIsArchived({ payload }) {
     yield put(setAllIsArchived({ updatedList }));
   } catch (ex) {
     console.error(ex);
+  } finally {
+    yield put(setLoading({ isLoading: false }));
   }
 }
 
