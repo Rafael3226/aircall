@@ -3,11 +3,12 @@ import { updateIsArchived, setIsArchived } from "../slice";
 
 import { patchIsArchive } from "../../../api/activityApi";
 
-function* hadleUpdateIsArchived(id, is_archived) {
+function* hadleUpdateIsArchived({ payload }) {
+  const { id, is_archived } = payload;
   try {
-    const { data } = yield call(patchIsArchive, id, is_archived);
+    yield call(patchIsArchive, { id, is_archived });
 
-    yield put(setIsArchived(data));
+    yield put(setIsArchived({ id, is_archived }));
   } catch (ex) {
     console.error(ex);
   }

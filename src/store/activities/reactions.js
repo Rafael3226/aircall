@@ -11,23 +11,12 @@ export const setGroup = (state, { payload }) => {
 };
 
 export const setIsArchived = (state, { payload }) => {
-  const { archived, unarchived, group } = state;
-  const activity = payload;
+  const { activities, group } = state;
+  const { id, is_archived } = payload;
 
-  const newState = { archived, unarchived };
-
-  newState.group = group.filter((a) => {
-    a.id === activity.id;
-  });
-
-  if (activity.is_archived) {
-    newState.archived = [...archived];
-    newState.archived.push(activity);
-    newState.unarchived = unarchived.filter((a) => a.id === activity.id);
-  } else {
-    newState.archived = archived.filter((a) => a.id === activity.id);
-    newState.unarchived = [...unarchived];
-    newState.unarchived.push(activity);
-  }
-  return newState;
+  const newGroup = group.filter((a) => a.id !== id);
+  const newActivities = activities.map((a) =>
+    a.id === id ? { ...a, is_archived } : a
+  );
+  return { ...state, group: newGroup, activities: newActivities };
 };

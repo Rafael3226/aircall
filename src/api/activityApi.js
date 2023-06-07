@@ -8,9 +8,8 @@ export const getActivities = async () =>
 export const getActivity = async (id) =>
   await axios.get(`${API_URL}/activities/${id}`);
 
-export const patchIsArchive = async (id, isArchived) => {
-  const updateData = { is_archived: isArchived };
-  return await axios.patch(`${API_URL}/activities/${id}`, updateData);
+export const patchIsArchive = ({ id, is_archived }) => {
+  return axios.patch(`${API_URL}/activities/${id}`, { is_archived });
 };
 
 export const patchReset = async () => await axios.patch(`${API_URL}/reset`);

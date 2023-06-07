@@ -5,14 +5,18 @@ import { updateIsArchived } from "../../store/activities";
 
 const ArchiveButton = ({ id, isArchived }) => {
   const dispatch = useDispatch();
-
-  const handleArchive = () => {
-    dispatch(updateIsArchived(id, !isArchived));
-  };
   return isArchived ? (
-    <BiArchiveOut onClick={handleArchive} />
+    <BiArchiveOut
+      onClick={() => {
+        dispatch(updateIsArchived({ id, is_archived: false }));
+      }}
+    />
   ) : (
-    <BiArchiveIn onClick={handleArchive} />
+    <BiArchiveIn
+      onClick={() => {
+        dispatch(updateIsArchived({ id, is_archived: true }));
+      }}
+    />
   );
 };
 
