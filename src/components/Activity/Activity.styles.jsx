@@ -32,7 +32,7 @@ export const IconContainer = styled.div`
 `;
 
 export const InformationContainer = styled.div`
-  padding-left: 40px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -45,7 +45,7 @@ export const ActivityTitle = styled.span`
 
 export const ActivitySubtitle = styled.span`
   font-size: 0.8rem;
-  color: #bcbbbc;
+  color: #bcbcbc;
 `;
 
 export const DateContainer = styled.span`
@@ -57,14 +57,14 @@ export const DateContainer = styled.span`
 `;
 
 export const Time = styled.span`
-  color: #bcbbbc;
+  color: #bcbcbc;
   font-weight: bold;
   padding: 4px;
   font-size: 0.75rem;
 `;
 
 export const Meridiem = styled.span`
-  color: #bcbbbc;
+  color: #bcbcbc;
   font-weight: bold;
   border-top: 1px solid #efefef;
   border-left: 1px solid #efefef;
@@ -113,7 +113,7 @@ export const ArchiveButtonContainer = styled.div`
   }
 
   svg {
-    color: #bcbbbc;
+    color: #bcbcbc;
     height: 18px;
     width: auto;
   }

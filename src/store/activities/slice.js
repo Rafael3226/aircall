@@ -12,6 +12,8 @@ const reducers = {
   setGroup: reactions.setGroup,
   updateIsArchived: reactions.noop,
   setIsArchived: reactions.setIsArchived,
+  updateAllIsArchived: reactions.noop,
+  setAllIsArchived: reactions.setAllIsArchived,
 };
 
 export const { actions, reducer } = createSlice({
@@ -26,4 +28,6 @@ export const {
   setGroup,
   updateIsArchived,
   setIsArchived,
+  updateAllIsArchived,
+  setAllIsArchived,
 } = actions;

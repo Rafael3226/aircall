@@ -1,5 +1,5 @@
 const UI_COLORS = {
-  gray: "#BCBBBC",
+  gray: "#bcbcbc",
   white: "#EFEFEF",
   3: "#FCFCFB",
 };
