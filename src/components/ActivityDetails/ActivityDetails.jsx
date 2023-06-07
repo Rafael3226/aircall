@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import ActivityGroup from "../ActivityGroup";
-import { mapActivity } from "../../util/mapActivity";
 import {
   ActivitySubtitle as Subtitle,
   ActivityTitle as Title,
@@ -11,15 +10,13 @@ import {
   ImageContainer,
 } from "./ActivityDetails.styles";
 
-const ActivityDetails = ({ group }) => {
-  const activity = Object.values(group)[0][0];
-  const { title, via } = mapActivity(activity);
+const ActivityDetails = ({ group, title, subtitle }) => {
   return (
     <DetailsContainer>
       <ImageContainer>
         <Image />
         <Title>{title}</Title>
-        <Subtitle>{via}</Subtitle>
+        <Subtitle>{subtitle}</Subtitle>
       </ImageContainer>
       <ActivityGroup groups={group} isDetail={true} />
     </DetailsContainer>
@@ -28,6 +25,8 @@ const ActivityDetails = ({ group }) => {
 
 ActivityDetails.propTypes = {
   group: PropTypes.object,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
 };
 
 export default ActivityDetails;

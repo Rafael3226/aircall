@@ -1,25 +1,23 @@
 import PropTypes from "prop-types";
-import { ListContainer } from "./ActivityList.styles";
+import { ListContainer } from "../ActivityList";
 import Activity from "../Activity";
 import { mapActivity } from "../../util/mapActivity";
 
-function ActivityList({ activities, onClick, isDetail }) {
+function ActivityDetailList({ activities, onClick }) {
   return (
     <ListContainer>
       {activities.map((item, i) => {
-        const { icon, title, via, time, meridiem, count, summary, duration } =
+        const { icon, time, meridiem, count, summary, duration } =
           mapActivity(item);
         return (
           <Activity
             key={i}
-            id={item.id}
             icon={icon}
-            title={isDetail ? summary : title}
-            subTitle={isDetail ? duration : via}
+            title={summary}
+            subTitle={duration}
             time={time}
             meridiem={meridiem}
             count={count}
-            isArchived={item.is_archived}
             onClick={() =>
               item.activities?.length
                 ? onClick(item.activities)
@@ -32,10 +30,9 @@ function ActivityList({ activities, onClick, isDetail }) {
   );
 }
 
-ActivityList.propTypes = {
+ActivityDetailList.propTypes = {
   activities: PropTypes.array,
   onClick: PropTypes.func,
-  isDetail: PropTypes.bool,
 };
 
-export default ActivityList;
+export default ActivityDetailList;

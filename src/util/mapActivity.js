@@ -7,6 +7,7 @@ export const mapActivity = ({
   to,
   via,
   created_at,
+  duration,
   activities = [],
 }) => {
   const mapped = {};
@@ -19,6 +20,9 @@ export const mapActivity = ({
   mapped.meridiem = formatTimeType(created_at) || "--";
   mapped.count = activities.length || 0;
   mapped.color = call_type === "missed" ? "red" : "";
+  mapped.duration = duration || 0;
+  mapped.duration += " Seconds";
+  mapped.summary = capitalize(`${direction} call`);
 
   return mapped;
 };
@@ -34,3 +38,11 @@ export const getIcon = ({ direction, call_type }) => {
 export const getTitle = ({ direction, from, to }) => {
   return direction === "inbound" ? from : to;
 };
+
+function capitalize(str) {
+  if (typeof str !== "string" || str.length === 0) {
+    return str;
+  }
+
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}

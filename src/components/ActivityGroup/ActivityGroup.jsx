@@ -16,8 +16,7 @@ const ActivityGroup = ({ groups, isDetail }) => {
 
   const groupList = Object.entries(groups);
 
-  const handleClick = ({ date, list }) => {
-    const group = { [date]: list };
+  const handleClick = (group) => {
     if (!isDetail) {
       dispatch(setGroup({ group }));
       navigate("/details");
@@ -32,8 +31,9 @@ const ActivityGroup = ({ groups, isDetail }) => {
             <DivitionText>{date}</DivitionText>
           </DivitionContainer>
           <ActivityList
+            isDetail={isDetail}
             activities={activities}
-            onClick={(list) => handleClick({ date, list })}
+            onClick={(group) => handleClick(group)}
           />
         </GroupContainer>
       ))}

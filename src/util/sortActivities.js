@@ -1,14 +1,5 @@
 import { formatDate, greatherOrEqual, greatherThan5min } from "./dates";
 
-const sortActivities = (list) => {
-  const { archived, unarchived } = divideByArchived(list);
-
-  return {
-    archived: groupActivities(archived),
-    unarchived: groupActivities(unarchived),
-  };
-};
-
 const isActivityEqual = (a1, a2) => {
   return (
     a1.from === a2.from &&
@@ -21,7 +12,7 @@ const isActivityEqual = (a1, a2) => {
   );
 };
 
-const divideByArchived = (list) => {
+export const divideByArchived = (list) => {
   return list.reduce(
     ({ archived, unarchived }, activity) => {
       activity.is_archived
@@ -51,7 +42,7 @@ const groupByTime = (list) => {
     const activityIndex = acc.findIndex((x) => isActivityEqual(x, current));
     const activityExist = activityIndex > -1;
     if (activityExist) {
-      const activity = acc[activityIndex];
+      const activity = { ...acc[activityIndex] };
 
       if (activity.activities === undefined) {
         activity.activities = [{ ...activity }, current];
@@ -71,11 +62,11 @@ const groupByTime = (list) => {
 };
 
 const groupActivities = (list) => {
-  if (!list.length) return [];
+  if (!list.length) return {};
 
   const groupedList = groupByTime(list);
 
   return groupByDate(groupedList);
 };
 
-export default sortActivities;
+export default groupActivities;

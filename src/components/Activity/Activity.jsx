@@ -13,8 +13,20 @@ import {
   Time,
   TitleContainer,
 } from "./Activity.styles.jsx";
+import ArchiveButton from "../ArchiveButton";
 
-const Activity = ({ icon, title, via, time, meridiem, count, onClick }) => {
+const Activity = ({
+  id,
+  icon,
+  title,
+  subTitle,
+  time,
+  meridiem,
+  count,
+  onClick,
+  isDetail,
+  isArchived,
+}) => {
   return (
     <ActivityContainer onClick={onClick}>
       <IconContainer>
@@ -25,10 +37,14 @@ const Activity = ({ icon, title, via, time, meridiem, count, onClick }) => {
           <ActivityTitle>{title}</ActivityTitle>
           {count !== 0 && <Counter>{count}</Counter>}
         </TitleContainer>
-        <ActivitySubtitle>{via}</ActivitySubtitle>
+        <ActivitySubtitle>{subTitle}</ActivitySubtitle>
       </InformationContainer>
       <DateContainer>
-        <ThreeDotsVertical />
+        {isDetail ? (
+          <ArchiveButton id={id} isArchived={isArchived} />
+        ) : (
+          <ThreeDotsVertical />
+        )}
         <Time>{time}</Time>
         <Meridiem>{meridiem}</Meridiem>
       </DateContainer>
@@ -37,13 +53,16 @@ const Activity = ({ icon, title, via, time, meridiem, count, onClick }) => {
 };
 
 Activity.propTypes = {
+  id: PropTypes.string,
   icon: PropTypes.string,
   title: PropTypes.string,
-  via: PropTypes.string,
+  subTitle: PropTypes.string,
   time: PropTypes.string,
   meridiem: PropTypes.string,
   count: PropTypes.number,
   onClick: PropTypes.func,
+  isDetail: PropTypes.bool,
+  isArchived: PropTypes.bool,
 };
 
 export default Activity;

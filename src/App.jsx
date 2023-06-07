@@ -9,9 +9,9 @@ import { useEffect } from "react";
 import { fetchActivities } from "./store/activities";
 import ActivityDetailsPage from "./pages/ActivityDetailsPage";
 
-const ActivitiesPage = lazy(() => import("./pages/ActivitiesPage.jsx"));
-const ArchivedActivitiesPage = lazy(() =>
-  import("./pages/ArchivedActivitiesPage.jsx")
+const ActivityPage = lazy(() => import("./pages/ActivityPage.jsx"));
+const ArchivedActivityPage = lazy(() =>
+  import("./pages/ArchivedActivityPage.jsx")
 );
 
 const App = () => {
@@ -29,8 +29,8 @@ const App = () => {
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/details" element={<ActivityDetailsPage />} />
-              <Route path="/archived" element={<ArchivedActivitiesPage />} />
-              <Route path="*" element={<ActivitiesPage />} />
+              <Route path="/archived" element={<ArchivedActivityPage />} />
+              <Route path="*" element={<ActivityPage />} />
             </Routes>
           </Suspense>
         </div>

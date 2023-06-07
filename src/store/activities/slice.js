@@ -2,15 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import * as reactions from "./reactions";
 
 const initialState = {
-  archived: {},
-  unarchived: {},
-  group: {},
+  activities: [],
+  group: [],
 };
 
 const reducers = {
-  fetchActivities: (s) => s,
+  fetchActivities: reactions.noop,
   setActivities: reactions.setActivities,
   setGroup: reactions.setGroup,
+  updateIsArchived: reactions.noop,
+  setIsArchived: reactions.setIsArchived,
 };
 
 export const { actions, reducer } = createSlice({
@@ -19,4 +20,10 @@ export const { actions, reducer } = createSlice({
   reducers,
 });
 
-export const { fetchActivities, setActivities, setGroup } = actions;
+export const {
+  fetchActivities,
+  setActivities,
+  setGroup,
+  updateIsArchived,
+  setIsArchived,
+} = actions;
