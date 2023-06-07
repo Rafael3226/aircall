@@ -1,14 +1,19 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ActivityGroup from "../components/ActivityGroup";
-import { selectUnarchived } from "../store/activities";
+import { fetchActivities, selectUnarchived } from "../store/activities";
 import groupActivities from "../util/sortActivities";
 import ArchiveAll from "../components/ArchiveAll";
-import DefaultPage from "./DefaultPage";
+import { useEffect } from "react";
 
 const ActivityPage = () => {
   const unarchived = useSelector(selectUnarchived);
+  const dispatch = useDispatch();
 
-  if (unarchived.length <= 0) return <DefaultPage title="No Activity" />;
+  useEffect(() => {
+    dispatch(fetchActivities());
+  }, [dispatch]);
+
+  if (unarchived.length <= 0) return;
 
   const groups = groupActivities(unarchived);
 

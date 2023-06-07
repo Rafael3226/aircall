@@ -4,10 +4,9 @@ import { Route, HashRouter, Routes } from "react-router-dom";
 import Header from "./layout/Header";
 import Loading from "./components/Loading";
 import { lazy } from "react";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchActivities } from "./store/activities";
+import { useSelector } from "react-redux";
 import ActivityDetailsPage from "./pages/ActivityDetailsPage";
+import { selectLoading } from "./store/loading/selectors";
 
 const ActivityPage = lazy(() => import("./pages/ActivityPage.jsx"));
 const ArchivedActivityPage = lazy(() =>
@@ -15,17 +14,14 @@ const ArchivedActivityPage = lazy(() =>
 );
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchActivities());
-  }, [dispatch]);
+  const isLoading = useSelector(selectLoading);
 
   return (
     <div className="container">
       <HashRouter>
         <Header />
         <div className="container-view">
+          {isLoading && <Loading />}
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/details" element={<ActivityDetailsPage />} />
