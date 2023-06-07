@@ -9,13 +9,13 @@ import DefaultPage from "./DefaultPage";
 const ActivityDetailsPage = () => {
   const groupList = useSelector(selectGroup);
 
-  if (groupList.length > 0) {
-    const group = groupByDate(groupList);
-    const { title, via } = mapActivity(groupList[0]);
+  if (groupList.length <= 0)
+    return <DefaultPage title="Select a call" showButton />;
 
-    return <ActivityDetails group={group} title={title} subtitle={via} />;
-  }
-  return <DefaultPage />;
+  const group = groupByDate(groupList);
+  const { title, via } = mapActivity(groupList[0]);
+
+  return <ActivityDetails group={group} title={title} subtitle={via} />;
 };
 
 export default ActivityDetailsPage;
