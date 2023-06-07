@@ -20,6 +20,7 @@ function ActivityList({ activities, onClick, isDetail }) {
             meridiem={meridiem}
             count={count}
             isArchived={item.is_archived}
+            isDetail={isDetail}
             onClick={() =>
               item.activities?.length
                 ? onClick(item.activities)

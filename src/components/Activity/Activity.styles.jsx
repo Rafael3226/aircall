@@ -1,19 +1,23 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ActivityContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   padding: 16px 0 16px 16px;
-
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  cursor: pointer;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+  ${(props) =>
+    !props.isDetail &&
+    css`
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+    `}
 `;
 
 export const IconContainer = styled.div`
@@ -45,8 +49,11 @@ export const ActivitySubtitle = styled.span`
 `;
 
 export const DateContainer = styled.span`
-  margin-left: auto;
   display: flex;
+  svg {
+    height: 18px;
+    width: auto;
+  }
 `;
 
 export const Time = styled.span`
@@ -91,4 +98,23 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
+`;
+
+export const ArchiveButtonContainer = styled.div`
+  margin-left: auto;
+  display: flex;
+
+  border-radius: 5px;
+  padding: 3px;
+
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  svg {
+    color: #bcbbbc;
+    height: 18px;
+    width: auto;
+  }
 `;

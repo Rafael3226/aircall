@@ -12,20 +12,7 @@ const isActivityEqual = (a1, a2) => {
   );
 };
 
-export const divideByArchived = (list) => {
-  return list.reduce(
-    ({ archived, unarchived }, activity) => {
-      activity.is_archived
-        ? archived.push(activity)
-        : unarchived.push(activity);
-
-      return { archived, unarchived };
-    },
-    { archived: [], unarchived: [] }
-  );
-};
-
-const groupByDate = (list) => {
+export const groupByDate = (list) => {
   return list.reduce((groups, current) => {
     const formatedDate = formatDate(current.created_at);
     if (!groups[formatedDate]) {
@@ -42,19 +29,13 @@ const groupByTime = (list) => {
     const activityIndex = acc.findIndex((x) => isActivityEqual(x, current));
     const activityExist = activityIndex > -1;
     if (activityExist) {
-      const activity = { ...acc[activityIndex] };
-
-      if (activity.activities === undefined) {
-        activity.activities = [{ ...activity }, current];
-      } else {
-        activity.activities.push(current);
-      }
-
+      const activity = acc[activityIndex];
+      activity.activities.push(current);
       if (greatherOrEqual(current.created_at, activity.created_at)) {
         activity.created_at = current.created_at;
       }
     } else {
-      acc.push(current);
+      acc.push({ ...current, activities: [current] });
     }
 
     return acc;

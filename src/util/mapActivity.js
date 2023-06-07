@@ -22,7 +22,7 @@ export const mapActivity = ({
   mapped.color = call_type === "missed" ? "red" : "";
   mapped.duration = duration || 0;
   mapped.duration += " Seconds";
-  mapped.summary = capitalize(`${direction} call`);
+  mapped.summary = capitalize(`${direction || "Unknown"} call`);
 
   return mapped;
 };

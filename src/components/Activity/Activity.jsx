@@ -4,6 +4,7 @@ import {
   ActivityContainer,
   ActivitySubtitle,
   ActivityTitle,
+  ArchiveButtonContainer,
   Counter,
   DateContainer,
   IconContainer,
@@ -28,23 +29,24 @@ const Activity = ({
   isArchived,
 }) => {
   return (
-    <ActivityContainer onClick={onClick}>
+    <ActivityContainer onClick={onClick} isDetail={isDetail}>
       <IconContainer>
         <ActivityIcons tag={icon} />
       </IconContainer>
       <InformationContainer>
         <TitleContainer>
           <ActivityTitle>{title}</ActivityTitle>
-          {count !== 0 && <Counter>{count}</Counter>}
+          {count > 1 && <Counter>{count}</Counter>}
         </TitleContainer>
         <ActivitySubtitle>{subTitle}</ActivitySubtitle>
       </InformationContainer>
+
+      <ArchiveButtonContainer>
+        {isDetail && <ArchiveButton id={id} isArchived={isArchived} />}
+      </ArchiveButtonContainer>
+
       <DateContainer>
-        {isDetail ? (
-          <ArchiveButton id={id} isArchived={isArchived} />
-        ) : (
-          <ThreeDotsVertical />
-        )}
+        <ThreeDotsVertical />
         <Time>{time}</Time>
         <Meridiem>{meridiem}</Meridiem>
       </DateContainer>
