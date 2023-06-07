@@ -11,9 +11,9 @@ export const ImageContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  background-color: gray;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
 
   border-radius: 100%;
 `;

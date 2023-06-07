@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 const ArchivedActivitiesPage = () => {
   const archived = useSelector(selectArchived);
-  const groups = groupActivities(archived);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,7 +15,11 @@ const ArchivedActivitiesPage = () => {
     dispatch(fetchActivities());
   }, [dispatch]);
 
-  if (archived.length <= 0) navigate("/");
+  useEffect(() => {
+    if (archived.length <= 0) navigate("/");
+  }, [navigate, archived]);
+
+  const groups = groupActivities(archived);
 
   return (
     <>

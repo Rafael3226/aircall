@@ -14,7 +14,7 @@ const ActivityDetails = ({ group, title, subtitle }) => {
   return (
     <DetailsContainer>
       <ImageContainer>
-        <Image />
+        <Image src="/person.jpg" />
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
       </ImageContainer>
