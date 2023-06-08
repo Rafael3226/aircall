@@ -6,7 +6,6 @@ import Loading from "./components/Loading";
 import { lazy } from "react";
 import { useSelector } from "react-redux";
 import { selectLoading } from "./store/loading/selectors";
-import { Analytics } from "@vercel/analytics/react";
 
 const ActivityDetailsPage = lazy(() => import("./pages/ActivityDetailsPage"));
 const ActivityPage = lazy(() => import("./pages/ActivityPage.jsx"));
@@ -34,7 +33,6 @@ const App = () => {
           </div>
         </HashRouter>
       </div>
-      <Analytics />
     </>
   );
 };

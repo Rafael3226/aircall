@@ -1,50 +1,18 @@
-import { useState, useEffect } from "react";
-import activityApi from "../api/activityApi";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchActivities, selectUnarchived } from "../store/activities";
+import groupActivities from "../util/sortActivities";
 
 const useActivity = () => {
-  const [archived, setArchived] = useState([]);
-  const [unarchived, setUnarchived] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const unarchived = useSelector(selectUnarchived);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
-    activityApi
-      .getActivities()
-      .then(({ data }) => {
-        saveActivities(data);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    dispatch(fetchActivities());
+  }, [dispatch]);
 
-  const saveActivities = (activitiesList) => {
-    const { archivedList, unarchivedList } =
-      separateListByArchiveStatus(activitiesList);
-
-    setArchived(archivedList);
-    setUnarchived(unarchivedList);
-  };
-  const separateListByArchiveStatus = (list) => {
-    const archivedList = [];
-    const unarchivedList = [];
-
-    list.forEach((item) => {
-      if (item.is_archived) {
-        archivedList.push(item);
-      } else {
-        unarchivedList.push(item);
-      }
-    });
-    return {
-      archivedList,
-      unarchivedList,
-    };
-  };
-
-  const archiveActivity = () => {};
-
-  return { loading, unarchived, archived, archiveActivity };
+  const groups = groupActivities(unarchived);
+  return { groups };
 };
 
 export default useActivity;
