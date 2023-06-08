@@ -1,23 +1,8 @@
-import { useSelector } from "react-redux";
 import ActivityDetails from "../components/ActivityDetails/ActivityDetails";
-import { selectGroup } from "../store/activities";
-import { groupByDate } from "../util/sortActivities";
-
-import { mapActivity } from "../util/mapActivity";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import useDetail from "../hooks/useDetail";
 
 const ActivityDetailsPage = () => {
-  const groupList = useSelector(selectGroup);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (groupList.length <= 0) navigate("/");
-  }, [navigate, groupList]);
-
-  if (groupList.length <= 0) return;
-  const group = groupByDate(groupList);
-  const { title, via } = mapActivity(groupList[0]);
+  const { group, title, via } = useDetail();
   return <ActivityDetails group={group} title={title} subtitle={via} />;
 };
 
